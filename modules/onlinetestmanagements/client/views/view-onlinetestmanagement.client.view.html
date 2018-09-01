@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.onlinetestmanagement.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.onlinetestmanagement.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="onlinetestmanagements.edit({ onlinetestmanagementId: vm.onlinetestmanagement._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.onlinetestmanagement.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.onlinetestmanagement.user"
+            ng-bind="vm.onlinetestmanagement.user.displayName"></span>
+      <span ng-if="!vm.onlinetestmanagement.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.onlinetestmanagement.content"></p>
+</section>

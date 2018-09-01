@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Payrollmanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="payrollmanagement in vm.payrollmanagements"
+       ui-sref="payrollmanagements.view({ payrollmanagementId: payrollmanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="payrollmanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="payrollmanagement.user" ng-bind="payrollmanagement.user.displayName"></span>
+        <span ng-if="!payrollmanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="payrollmanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.payrollmanagements.$resolved && !vm.payrollmanagements.length">
+    No Payrollmanagements yet, why don't you <a ui-sref="payrollmanagements.create">create one</a>?
+  </div>
+</section>

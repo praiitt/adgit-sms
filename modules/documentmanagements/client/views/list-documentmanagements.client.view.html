@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Documentmanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="documentmanagement in vm.documentmanagements"
+       ui-sref="documentmanagements.view({ documentmanagementId: documentmanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="documentmanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="documentmanagement.user" ng-bind="documentmanagement.user.displayName"></span>
+        <span ng-if="!documentmanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="documentmanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.documentmanagements.$resolved && !vm.documentmanagements.length">
+    No Documentmanagements yet, why don't you <a ui-sref="documentmanagements.create">create one</a>?
+  </div>
+</section>

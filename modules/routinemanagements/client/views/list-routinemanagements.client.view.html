@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Routinemanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="routinemanagement in vm.routinemanagements"
+       ui-sref="routinemanagements.view({ routinemanagementId: routinemanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="routinemanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="routinemanagement.user" ng-bind="routinemanagement.user.displayName"></span>
+        <span ng-if="!routinemanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="routinemanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.routinemanagements.$resolved && !vm.routinemanagements.length">
+    No Routinemanagements yet, why don't you <a ui-sref="routinemanagements.create">create one</a>?
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.leavemanagement.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.leavemanagement.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="leavemanagements.edit({ leavemanagementId: vm.leavemanagement._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.leavemanagement.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.leavemanagement.user"
+            ng-bind="vm.leavemanagement.user.displayName"></span>
+      <span ng-if="!vm.leavemanagement.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.leavemanagement.content"></p>
+</section>

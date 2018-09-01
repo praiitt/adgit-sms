@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Notificationmanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="notificationmanagement in vm.notificationmanagements"
+       ui-sref="notificationmanagements.view({ notificationmanagementId: notificationmanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="notificationmanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="notificationmanagement.user" ng-bind="notificationmanagement.user.displayName"></span>
+        <span ng-if="!notificationmanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="notificationmanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.notificationmanagements.$resolved && !vm.notificationmanagements.length">
+    No Notificationmanagements yet, why don't you <a ui-sref="notificationmanagements.create">create one</a>?
+  </div>
+</section>

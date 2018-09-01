@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.payrollmanagement.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.payrollmanagement.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="payrollmanagements.edit({ payrollmanagementId: vm.payrollmanagement._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.payrollmanagement.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.payrollmanagement.user"
+            ng-bind="vm.payrollmanagement.user.displayName"></span>
+      <span ng-if="!vm.payrollmanagement.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.payrollmanagement.content"></p>
+</section>

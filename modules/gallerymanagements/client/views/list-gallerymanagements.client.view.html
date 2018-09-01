@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Gallerymanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="gallerymanagement in vm.gallerymanagements"
+       ui-sref="gallerymanagements.view({ gallerymanagementId: gallerymanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="gallerymanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="gallerymanagement.user" ng-bind="gallerymanagement.user.displayName"></span>
+        <span ng-if="!gallerymanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="gallerymanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.gallerymanagements.$resolved && !vm.gallerymanagements.length">
+    No Gallerymanagements yet, why don't you <a ui-sref="gallerymanagements.create">create one</a>?
+  </div>
+</section>

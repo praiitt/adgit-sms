@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Leavemanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="leavemanagement in vm.leavemanagements"
+       ui-sref="leavemanagements.view({ leavemanagementId: leavemanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="leavemanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="leavemanagement.user" ng-bind="leavemanagement.user.displayName"></span>
+        <span ng-if="!leavemanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="leavemanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.leavemanagements.$resolved && !vm.leavemanagements.length">
+    No Leavemanagements yet, why don't you <a ui-sref="leavemanagements.create">create one</a>?
+  </div>
+</section>

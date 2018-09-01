@@ -1,0 +1,24 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.teacher-staffmanagement._id ? 'Edit Teacher staffmanagement' : 'New Teacher staffmanagement'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.teacher-staffmanagementForm" class="form-horizontal" ng-submit="vm.save(vm.form.teacher-staffmanagementForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.teacher-staffmanagement.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.teacher-staffmanagementForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Teacher staffmanagement name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.teacher-staffmanagement._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

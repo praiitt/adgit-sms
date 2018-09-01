@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Onlinetestmanagements</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="onlinetestmanagement in vm.onlinetestmanagements"
+       ui-sref="onlinetestmanagements.view({ onlinetestmanagementId: onlinetestmanagement._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="onlinetestmanagement.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="onlinetestmanagement.user" ng-bind="onlinetestmanagement.user.displayName"></span>
+        <span ng-if="!onlinetestmanagement.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="onlinetestmanagement.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.onlinetestmanagements.$resolved && !vm.onlinetestmanagements.length">
+    No Onlinetestmanagements yet, why don't you <a ui-sref="onlinetestmanagements.create">create one</a>?
+  </div>
+</section>
